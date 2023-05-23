@@ -3,7 +3,9 @@ import ChefRecommends from "../Chef Recommends/ChefRecommends";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import Testimonials from "../Testimonials/Testimonials";
+import BistoBoss from "../bistro boss/BistoBoss";
 import Category from "../category/Category";
+import Contact from "../contact/Contact";
 
 
 const Home = () => {
@@ -11,7 +13,9 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Category></Category>
+            <BistoBoss></BistoBoss>
             <PopularMenu></PopularMenu>
+            <Contact></Contact>
             <ChefRecommends></ChefRecommends>
             <Featured></Featured>
             <Testimonials></Testimonials>
