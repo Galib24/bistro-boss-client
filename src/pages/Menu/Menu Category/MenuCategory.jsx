@@ -1,12 +1,14 @@
+import Cover from "../../Shared/Cover/Cover";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 
 
-const MenuCategory = ({ items }) => {
+const MenuCategory = ({ items,title, img }) => {
 
     return (
-        <div>
-            <div className="grid md:grid-cols-2 gap-10">
+        <div  className="pt-8">
+             {title && <Cover img={img} title={title}></Cover>}
+            <div className="grid md:grid-cols-2 gap-10 mt-16 mb-16">
                 {
                     items.map(item => <MenuItem
 
