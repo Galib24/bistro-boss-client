@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* customization of thumbnails of react-awesome-slider of home page */
+.thumbs-wrapper ul{
+    display:flex !important;
+    justify-content: center !important;
+    }
