@@ -38,7 +38,7 @@ const Menu = () => {
             <MenuCategory
             
             items={desserts}
-            title="Desert"
+            title="desert"
             img={dessertImg}
             >
                 
@@ -58,7 +58,7 @@ const Menu = () => {
             <MenuCategory
             
             items={salad}
-            title={'Salads'}
+            title={'salads'}
             img={SaladImg}
             >
                 
@@ -68,7 +68,7 @@ const Menu = () => {
             <MenuCategory
             
             items={soup}
-            title={'Soup'}
+            title={'soup'}
             img={SoupImg}
             >
                 
