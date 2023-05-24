@@ -12,10 +12,10 @@ import MenuCategory from '../Menu Category/MenuCategory';
 
 const Menu = () => {
     const [menu] = useMenu();
-    const desserts =  menu.filter(item => item.category === 'dessert');
+    const dessert =  menu.filter(item => item.category === 'dessert');
     const soup =  menu.filter(item => item.category === 'soup');
     const salad =  menu.filter(item => item.category === 'salad');
-    const pizzas =  menu.filter(item => item.category === 'pizza');
+    const pizza =  menu.filter(item => item.category === 'pizza');
     const offered =  menu.filter(item => item.category === 'offered');
     return (
         <div>
@@ -37,8 +37,8 @@ const Menu = () => {
             {/* desert menu items */}
             <MenuCategory
             
-            items={desserts}
-            title="desert"
+            items={dessert}
+            title="dessert"
             img={dessertImg}
             >
                 
@@ -47,8 +47,8 @@ const Menu = () => {
             {/* Pizza menu items */}
             <MenuCategory
             
-            items={pizzas}
-            title={'pizzas'}
+            items={pizza}
+            title={'pizza'}
             img={PizzaImg}
             >
                 
@@ -58,7 +58,7 @@ const Menu = () => {
             <MenuCategory
             
             items={salad}
-            title={'salads'}
+            title={'salad'}
             img={SaladImg}
             >
                 

@@ -1,9 +1,32 @@
 import FoodCard from "../../../Components/FoodCard/FoodCard";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const OrderTab = ({ items }) => {
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+    };
     return (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 my-12">
+        <div >
+      
+            
+
+
+
+
+
+            <Swiper
+        pagination={pagination}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 my-12">
             {
                 items.map(item => <FoodCard
 
@@ -14,6 +37,11 @@ const OrderTab = ({ items }) => {
 
                 </FoodCard>)
             }
+            </div>
+       
+        </SwiperSlide>
+      
+      </Swiper>
         </div>
     );
 };
