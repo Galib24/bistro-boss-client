@@ -8,8 +8,8 @@ const NavBar = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then()
-        .then(error => console.log(error));
+            .then()
+            .then(error => console.log(error));
 
     }
 
@@ -27,6 +27,7 @@ const NavBar = () => {
         {
             user ? <>
                 <button onClick={handleLogOut} className="btn btn-active btn-ghost">LogOut</button>
+                <li><span>{user?.displayName}</span></li>
             </> : <>
                 <li><Link to="/login">Log In</Link></li>
 
