@@ -36,8 +36,9 @@ const NavBar = () => {
 
         {
             user ? <>
-                <button onClick={handleLogOut} className="btn btn-active btn-ghost">LogOut</button>
+                <li><button onClick={handleLogOut} className="btn mt-3 btn-active btn-ghost">LogOut</button></li>
                 <li><span>{user?.displayName}</span></li>
+                <li><img  className=" w-20" src={user?.photoURL} alt="" /> </li>
             </> : <>
                 <li><Link to="/login">Log In</Link></li>
 
