@@ -12,7 +12,7 @@ const Login = () => {
 
     const [disabled, setDisabled] = useState(true);
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn,user } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -52,6 +52,16 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
     }
+    
+    // useEffect(()=>{
+    //     if(user?.email && localStorage.getItem('access-token')){
+            
+    //         navigate(from, { replace: true });
+
+    //     }
+    // },[from, navigate, user])
+
+
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
         // console.log(value);
@@ -104,7 +114,7 @@ const Login = () => {
                             {/* todo make button disable for captcha */}
                             <div className="form-control mt-6">
 
-                                <input disabled={disabled} className="btn btn-primary" type="submit" value='Login' />
+                                <input disabled={false} className="btn btn-primary" type="submit" value='Login' />
                             </div>
                         </form>
                         <p><small>New Here? <Link to='/signup'>Create an account</Link> </small></p>
