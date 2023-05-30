@@ -1,14 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const DashingBoard = () => {
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
 
 
     // TODO: load data from the server to have dynamic isAdmin based on data
-    const isAdmin = true;
+    // const isAdmin = true;
 
 
 
