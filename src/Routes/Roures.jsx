@@ -12,6 +12,8 @@ import Secret from "../pages/Shared/Secret/Secret";
 import DashingBoard from "../LayOut/DashinBoard/DashingBoard";
 import MyCart from "../pages/Dashboard Items/MyCart/MyCart";
 import AllUsers from "../pages/Dashboard Items/Allusers/AllUsers";
+import AddItem from "../pages/Dashboard Items/AddItem/AddItem";
+import AdminRoutes from "./AdminRoutes";
 
 
 
@@ -57,6 +59,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allusers',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'addItem',
+                element: <AdminRoutes><AddItem></AddItem></AdminRoutes>
             }
         ]
     }

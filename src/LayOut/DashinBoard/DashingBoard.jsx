@@ -35,7 +35,7 @@ const DashingBoard = () => {
 
 
                             <li><NavLink to='/dashboard/home'><FaHome></FaHome>Admin Home</NavLink></li>
-                            <li><NavLink to='/dashboard/reservation'><FaUtensils></FaUtensils> Add Items </NavLink></li>
+                            <li><NavLink to='/dashboard/addItem'><FaUtensils></FaUtensils> Add an Item </NavLink></li>
                             <li>
                                 <NavLink to='/dashboard/history'><FaWallet></FaWallet>Manage Bookings</NavLink>
 
