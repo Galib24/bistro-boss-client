@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
 // import React from 'react';
 
 import { FaTrashAlt, FaUpload } from "react-icons/fa";
 import SectionTitle from "../../../Components/Section Title/SectionTitle";
 import useMenu from "../../../Hooks/useMenu";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageItems = () => {
+    const [menu, ,refetch] = useMenu();
+    const [axiosSecure] = useAxiosSecure()
     const updateItem = () => {
 
     }
@@ -25,10 +29,17 @@ const ManageItems = () => {
             //     'Your file has been deleted.',
             //     'success'
             //   )
+
+            axiosSecure.delete(`/menu/${item._id}`)
+            .then(res => {
+                console.log('deleted res', res);
+                refetch();
+            })
+
             }
           })
     }
-    const [menu] = useMenu();
+  
     return (
         <div className="w-full">
             <SectionTitle
