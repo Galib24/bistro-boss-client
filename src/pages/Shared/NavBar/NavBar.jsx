@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../../Hooks/useCart";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [cart] = useCart();
+    const [isAdmin] = useAdmin()
 
     const handleLogOut = () => {
         logOut()
@@ -23,16 +25,19 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/order/salad">Order Food</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
+        {
+            isAdmin ? <li><Link to='/dashboard/adminhome'>Dashboard</Link></li> 
+            : <li><Link to='/dashboard/userhome'>Dashboard</Link></li>
+        }
         <li>
-            
-           {user && <Link to="/dashboard/mycart">
-            <button className="btn gap-2">
-                <FaShoppingCart></FaShoppingCart>
-                <div className="badge badge-error">+{cart.length || 0}</div>
-            </button>
-        </Link>}
-        
+
+            {user && <Link to="/dashboard/mycart">
+                <button className="btn gap-2">
+                    <FaShoppingCart></FaShoppingCart>
+                    <div className="badge badge-error">+{cart.length || 0}</div>
+                </button>
+            </Link>}
+
         </li>
 
 
@@ -40,7 +45,7 @@ const NavBar = () => {
             user ? <>
                 <li><button onClick={handleLogOut} className="btn mt-3 btn-active btn-ghost">LogOut</button></li>
                 <li><span>{user?.displayName}</span></li>
-                <li><img  className=" w-20" src={user?.photoURL} alt="" /> </li>
+                <li><img className=" w-20" src={user?.photoURL} alt="" /> </li>
             </> : <>
                 <li><Link to="/login">Log In</Link></li>
 
