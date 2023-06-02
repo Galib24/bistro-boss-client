@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import './CheckOutForm.css'
 
 
 const CheckOutForm = ({ price, cart }) => {
@@ -15,11 +16,13 @@ const CheckOutForm = ({ price, cart }) => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                // console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
     }, [axiosSecure, price])
 
 
@@ -77,17 +80,20 @@ const CheckOutForm = ({ price, cart }) => {
                 const payment = {
                     email: user?.email, transactionId: paymentIntent.id,
                     price,
+                    date: new Date(),
                     quantity: cart.length,
-                    items: cart.map(item => item._id),
+                    cartItems: cart.map(item => item._id),
+                    menuItems: cart.map(item => item.menuItemId),
+                    status: 'service pending',
                     itemName: cart.map(item => item.name)
                 }
-                axiosSecure.post('/payments',  payment)
-                .then(res => {
-                    console.log(res.data);
-                    if(res.data.insertedID){
-                        // confirm('added payment data to mongo!')
-                    }
-                })
+                axiosSecure.post('/payments', payment)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.insertedID) {
+                            // confirm('added payment data to mongo!')
+                        }
+                    })
             }
 
         }
