@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ price, cart }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -20,10 +20,7 @@ const CheckOutForm = ({ price }) => {
                 // console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             })
-    }, [])
-
-
-
+    }, [axiosSecure, price])
 
 
 
@@ -39,7 +36,7 @@ const CheckOutForm = ({ price }) => {
         if (card === null) {
             return
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         });
@@ -76,7 +73,21 @@ const CheckOutForm = ({ price }) => {
                 setTransactionId(paymentIntent.id);
                 // const transactionId = paymentIntent.id;
 
-                // TODO next steps
+                // save payment information to the sever
+                const payment = {
+                    email: user?.email, transactionId: paymentIntent.id,
+                    price,
+                    quantity: cart.length,
+                    items: cart.map(item => item._id),
+                    itemName: cart.map(item => item.name)
+                }
+                axiosSecure.post('/payments',  payment)
+                .then(res => {
+                    console.log(res.data);
+                    if(res.data.insertedID){
+                        // confirm('added payment data to mongo!')
+                    }
+                })
             }
 
         }
