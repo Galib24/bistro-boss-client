@@ -26,12 +26,14 @@ const NavBar = () => {
         <li><Link to="/secret">Secret</Link></li>
         <li>
             
-            <Link to="/dashboard/mycart">
+           {user && <Link to="/dashboard/mycart">
             <button className="btn gap-2">
                 <FaShoppingCart></FaShoppingCart>
                 <div className="badge badge-error">+{cart.length || 0}</div>
             </button>
-        </Link></li>
+        </Link>}
+        
+        </li>
 
 
         {
