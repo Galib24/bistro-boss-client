@@ -20,7 +20,7 @@ console.log(cart);
         console.log(item);
         if (user && user.email) {
             const cartItem = { menuItemId: _id, image, name, recipe, price, email: user.email }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://bistro-boss-server-galib24.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
