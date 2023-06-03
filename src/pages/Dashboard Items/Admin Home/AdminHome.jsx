@@ -101,7 +101,7 @@ const AdminHome = () => {
         </div>
 
       </div>
-      <div className="flex">
+      <div className="flex md:flex-col lg:flex-row">
         <div className="w-1/2">
           <BarChart
             width={500}
