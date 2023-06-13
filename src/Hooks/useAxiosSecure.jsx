@@ -5,7 +5,7 @@ import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
   baseURL: 'https://bistro-boss-server-galib24.vercel.app', // Replace with your base URL
-});
+}); //http://localhost:5000/
 
 
 const useAxiosSecure = () => {
